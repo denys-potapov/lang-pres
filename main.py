@@ -61,12 +61,10 @@ for lang, ballots in votes.items():
     ratings[lang] = rating
 
 for cand in BIG_CANDS:
-    print(cand)
+    print('<strong>{}</strong>'.format(cand))
     for lang in BIG_LANGS_ALL:
-        print('{} {:.0f}%'.format(lang, ratings[lang][cand]))
+        if lang != ALL:
+            print('{} {:.0f}%'.format(lang, ratings[lang][cand]))
+        else:
+            print('<i>{} {:.0f}%</i>'.format(lang, ratings[lang][cand]))
     print('')
-
-al = ratings[ALL].items()
-v = [a[1] for a in al]
-
-print(ratings[ALL], sum(v), len(votes[ALL]))
